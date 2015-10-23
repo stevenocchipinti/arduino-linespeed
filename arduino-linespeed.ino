@@ -65,7 +65,8 @@ void loop() {
   // If the server's disconnected, stop the client
   if (!client.connected()) {
     client.stop();
-    while (true);
+    delay(30000);
+    refreshData();
   }
 }
 
