@@ -76,13 +76,6 @@ void loop() {
 
 // Helper functions
 
-void screenClear() {
-  lcd.setCursor(0, 0);
-  lcd.print("                ");
-  lcd.setCursor(0, 1);
-  lcd.print("                ");
-}
-
 void screenPrint(int line, String text) {
   lcd.setCursor(0, line);
   lcd.print("                ");
@@ -91,7 +84,7 @@ void screenPrint(int line, String text) {
 }
 
 void refreshData() {
-  screenClear();
+  lcd.clear();
   screenPrint(0, "Refreshing...");
   if (client.connect(routerAddress, 80)) {
     client.println("GET /info.html HTTP/1.1");
