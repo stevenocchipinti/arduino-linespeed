@@ -15,6 +15,8 @@ boolean capturingUpstream = false;
 boolean capturingDownstream = false;
 String upstream;
 String downstream;
+int buttonValue;
+
 
 
 
@@ -65,7 +67,7 @@ void loop() {
   // If the server's disconnected, stop the client
   if (!client.connected()) {
     client.stop();
-    delay(30000);
+    waitForSelectButton();
     refreshData();
   }
 }
@@ -105,3 +107,13 @@ String extractInnerHtml(String line) {
   int i2 = line.indexOf('<', i1);
   return line.substring(i1, i2);
 }
+
+void waitForSelectButton() {
+  while (true) {
+    buttonValue = analogRead(0);
+    if (buttonValue > 555 && buttonValue < 790) {
+      break;
+    }
+  }
+}
+
